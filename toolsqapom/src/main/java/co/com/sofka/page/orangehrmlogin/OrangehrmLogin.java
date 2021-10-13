@@ -18,12 +18,14 @@ public class OrangehrmLogin  extends CommonActionsOnPages{
     private final By user = By.id("txtUsername");
     private final By password = By.id("txtPassword");
     private final By btnLogin = By.id("btnLogin");
+
     private final By adminMenu = By.xpath("//*[@id=\"menu_admin_viewAdminModule\"]/b");
     private final By searchEmployeeName = By.id("searchSystemUser_employeeName_empName");
 
     //For Assertions test case.
-    private final By assertionLoginExitoso = By.id("welcome");
     private final By assertionLoginFail = By.id("spanMessage");
+    private final By assertionLoginExitoso = By.id("welcome");
+
 
 
     public OrangehrmLogin(WebDriver driver,OrangehrmLoginModel orangeLogin) {
@@ -83,6 +85,11 @@ public class OrangehrmLogin  extends CommonActionsOnPages{
     }
 
 
+    public String getAssertionLoginExitoso() {
+        return getText(assertionLoginExitoso).trim();
+    }
 
-
+    public String getAssertionLoginFail() {
+        return getText(assertionLoginFail).trim();
+    }
 }
