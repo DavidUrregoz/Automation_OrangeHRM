@@ -1,7 +1,7 @@
 package co.com.sofka.stepdefinition.orangehrm.opt1;
 
 import co.com.sofka.model.orangehrmlogin.OrangehrmLoginModel;
-import co.com.sofka.page.orangehrmlogin.OrangehrmLogin;
+import co.com.sofka.page.orangehrmlogin.OrangehrmLoginSearch;
 import co.com.sofka.stepdefinition.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,11 +11,12 @@ import org.junit.jupiter.api.Assertions;
 
 
 import static co.com.sofka.util.Seconds.TEN_SECONDS;
+import static co.com.sofka.util.Numbers.*;
 
 public class LoginCucumberStepDefinition extends WebUI {
     private static final Logger LOGGER = Logger.getLogger(LoginCucumberStepDefinition.class);
     private OrangehrmLoginModel orangehrmLoginModel;
-    private OrangehrmLogin orangehrmLogin;
+    private OrangehrmLoginSearch orangehrmLogin;
 
     private static final String ASSERTION_EXCEPTION_MESSAGE = "Los valores suministrados no son los esperados.";
 
@@ -34,8 +35,8 @@ public class LoginCucumberStepDefinition extends WebUI {
     @When("el empleado administrativo ingresa un User y Password correctos y presiona el boton de login")
     public void el_empleado_administrativo_ingresa_un_user_y_password_correctos_y_presiona_el_boton_de_login() {
         try {
-            dataCorrectConfiguration(0);
-            orangehrmLogin = new OrangehrmLogin(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
+            dataCorrectConfiguration(NUMBER0.getValue());
+            orangehrmLogin = new OrangehrmLoginSearch(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
             orangehrmLogin.llenarLogin();
         } catch (Exception exception) {
             quitDriver();
@@ -47,9 +48,8 @@ public class LoginCucumberStepDefinition extends WebUI {
     @Then("el sistema debera ingresar exitosamente a la pagina de index.php\\/dashboard")
     public void elSistemaDeberaIngresarExitosamenteALaPaginaDeIndexPhpDashboard() {
         try {
-            Assertions.assertEquals(
-                    expected(0),
-                    orangehrmLogin.getAssertionLoginExitoso(),
+            Assertions.assertTrue(
+                    orangehrmLogin.isDisplayed(orangehrmLogin.getAssertionLoginExitoso()),
                     ASSERTION_EXCEPTION_MESSAGE
             );
             quitDriver();
@@ -63,8 +63,8 @@ public class LoginCucumberStepDefinition extends WebUI {
     @When("el empleado administrativo ingresa un User y Password incorrectos y presiona el boton de login")
     public void el_empleado_administrativo_ingresa_un_user_y_password_incorrectos_y_presiona_el_boton_de_login() {
         try {
-            dataCorrectConfiguration(1);
-            orangehrmLogin = new OrangehrmLogin(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
+            dataCorrectConfiguration(NUMBER1.getValue());
+            orangehrmLogin = new OrangehrmLoginSearch(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
             orangehrmLogin.llenarLogin();
         } catch (Exception exception) {
             quitDriver();
@@ -78,7 +78,7 @@ public class LoginCucumberStepDefinition extends WebUI {
     public void el_sistema_debera_retornar_un_mensaje_en_pantalla_invalid_credentials() {
         try {
             Assertions.assertEquals(
-                    expected(1),
+                    expected(NUMBER1.getValue()),
                     orangehrmLogin.getAssertionLoginFail(),
                     ASSERTION_EXCEPTION_MESSAGE
             );
@@ -93,8 +93,8 @@ public class LoginCucumberStepDefinition extends WebUI {
     @When("el empleado administrativo no ingresa un User  pero si un Password  y presiona el boton de login")
     public void el_empleado_administrativo_no_ingresa_un_user_pero_si_un_password_y_presiona_el_boton_de_login() {
         try {
-            dataCorrectConfiguration(2);
-            orangehrmLogin = new OrangehrmLogin(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
+            dataCorrectConfiguration(NUMBER2.getValue());
+            orangehrmLogin = new OrangehrmLoginSearch(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
             orangehrmLogin.llenarLogin();
         } catch (Exception exception) {
             quitDriver();
@@ -107,7 +107,7 @@ public class LoginCucumberStepDefinition extends WebUI {
     public void el_sistema_debera_retornar_un_mensaje_en_pantalla_username_cannot_be_empty() {
         try {
             Assertions.assertEquals(
-                    expected(2),
+                    expected(NUMBER2.getValue()),
                     orangehrmLogin.getAssertionLoginFail(),
                     ASSERTION_EXCEPTION_MESSAGE
             );
@@ -122,8 +122,8 @@ public class LoginCucumberStepDefinition extends WebUI {
     @When("el empleado administrativo ingresa un User pero no un Password  y presiona el boton de login")
     public void el_empleado_administrativo_ingresa_un_user_pero_no_un_password_y_presiona_el_boton_de_login() {
         try {
-            dataCorrectConfiguration(3);
-            orangehrmLogin = new OrangehrmLogin(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
+            dataCorrectConfiguration(NUMBER3.getValue());
+            orangehrmLogin = new OrangehrmLoginSearch(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
             orangehrmLogin.llenarLogin();
         } catch (Exception exception) {
             quitDriver();
@@ -136,7 +136,7 @@ public class LoginCucumberStepDefinition extends WebUI {
     public void el_sistema_debera_retornar_un_mensaje_en_pantalla_password_cannot_be_empty() {
         try {
             Assertions.assertEquals(
-                    expected(3),
+                    expected(NUMBER3.getValue()),
                     orangehrmLogin.getAssertionLoginFail(),
                     ASSERTION_EXCEPTION_MESSAGE
             );
@@ -151,8 +151,8 @@ public class LoginCucumberStepDefinition extends WebUI {
     @When("el empleado administrativo no ingresa un User ni un Password  y presiona el boton de login")
     public void el_empleado_administrativo_no_ingresa_un_user_ni_un_password_y_presiona_el_boton_de_login() {
         try {
-            dataCorrectConfiguration(4);
-            orangehrmLogin = new OrangehrmLogin(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
+            dataCorrectConfiguration(NUMBER4.getValue());
+            orangehrmLogin = new OrangehrmLoginSearch(driver, orangehrmLoginModel, TEN_SECONDS.getValue());
             orangehrmLogin.llenarLogin();
         } catch (Exception exception) {
             quitDriver();
@@ -165,7 +165,7 @@ public class LoginCucumberStepDefinition extends WebUI {
     public void el_sistema_debera_retornar_una_alerta_en_pantalla_username_cannot_be_empty() {
         try {
             Assertions.assertEquals(
-                    expected(2),
+                    expected(NUMBER2.getValue()),
                     orangehrmLogin.getAssertionLoginFail(),
                     ASSERTION_EXCEPTION_MESSAGE
             );
@@ -215,7 +215,6 @@ public class LoginCucumberStepDefinition extends WebUI {
         switch (casos) {
             case 0:
                 return "Welcome Paul";
-
             case 1:
                 return "Invalid credentials";
 

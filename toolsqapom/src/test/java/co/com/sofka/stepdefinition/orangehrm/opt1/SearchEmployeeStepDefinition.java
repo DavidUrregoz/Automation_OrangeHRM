@@ -1,7 +1,7 @@
 package co.com.sofka.stepdefinition.orangehrm.opt1;
 
 import co.com.sofka.model.orangehrmlogin.OrangehrmLoginModel;
-import co.com.sofka.page.orangehrmlogin.OrangehrmLogin;
+import co.com.sofka.page.orangehrmlogin.OrangehrmLoginSearch;
 import co.com.sofka.stepdefinition.setup.WebUI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +17,7 @@ public class SearchEmployeeStepDefinition extends WebUI {
 
     private static final Logger LOGGER = Logger.getLogger(LoginCucumberStepDefinition.class);
     private OrangehrmLoginModel orangehrmLoginModel;
-    private OrangehrmLogin orangehrmLogin;
+    private OrangehrmLoginSearch orangehrmLogin;
 
     private static final String ASSERTION_EXCEPTION_MESSAGE = "Los valores suministrados no son los esperados.";
 
@@ -26,7 +26,7 @@ public class SearchEmployeeStepDefinition extends WebUI {
         try{
             generalSetUp();
             dataCorrectConfiguration();
-            orangehrmLogin = new OrangehrmLogin(driver,orangehrmLoginModel,TEN_SECONDS.getValue());
+            orangehrmLogin = new OrangehrmLoginSearch(driver,orangehrmLoginModel,TEN_SECONDS.getValue());
             orangehrmLogin.llenarLogin();
         } catch (Exception exception){
             quitDriver();
@@ -56,6 +56,7 @@ public class SearchEmployeeStepDefinition extends WebUI {
                     orangehrmLogin.getAssertionSearch(),
                     ASSERTION_EXCEPTION_MESSAGE
             );
+
             quitDriver();
         } catch (Exception exception){
             quitDriver();
@@ -68,7 +69,7 @@ public class SearchEmployeeStepDefinition extends WebUI {
         orangehrmLoginModel = new OrangehrmLoginModel();
         orangehrmLoginModel.setUser("Admin");
         orangehrmLoginModel.setPassword("admin123");
-        orangehrmLoginModel.setEmployeeName(EmployeeName.NAME11);
+        orangehrmLoginModel.setEmployeeName(EmployeeName.NAME4);
     }
 
     private String expected(){

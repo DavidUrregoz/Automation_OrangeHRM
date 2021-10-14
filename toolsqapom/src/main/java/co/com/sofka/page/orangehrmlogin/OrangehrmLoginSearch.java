@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-public class OrangehrmLogin  extends CommonActionsOnPages{
-    private static final Logger LOGGER = Logger.getLogger(OrangehrmLogin.class);
+public class OrangehrmLoginSearch extends CommonActionsOnPages{
+    private static final Logger LOGGER = Logger.getLogger(OrangehrmLoginSearch.class);
     private OrangehrmLoginModel orangeLoginModel;
     private static final String MODEL_NULL_MESSAGE = "El modelo del formulario es nulo.";
 
@@ -32,12 +32,12 @@ public class OrangehrmLogin  extends CommonActionsOnPages{
 
 
 
-    public OrangehrmLogin(WebDriver driver,OrangehrmLoginModel orangeLogin) {
+    public OrangehrmLoginSearch(WebDriver driver, OrangehrmLoginModel orangeLogin) {
         super(driver);
         this.orangeLoginModel = orangeLogin;
     }
 
-    public OrangehrmLogin(WebDriver driver,OrangehrmLoginModel orangeLogin,int secondsForExplicitWait) {
+    public OrangehrmLoginSearch(WebDriver driver, OrangehrmLoginModel orangeLogin, int secondsForExplicitWait) {
         super(driver, secondsForExplicitWait);
         if(orangeLogin == null)
             LOGGER.warn(MODEL_NULL_MESSAGE);
@@ -83,8 +83,8 @@ public class OrangehrmLogin  extends CommonActionsOnPages{
     }
 
 
-    public String getAssertionLoginExitoso() {
-        return getText(assertionLoginExitoso).trim();
+    public By getAssertionLoginExitoso() {
+        return assertionLoginExitoso;
     }
 
     public String getAssertionLoginFail() {
