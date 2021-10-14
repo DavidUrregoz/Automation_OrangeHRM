@@ -10,7 +10,8 @@ public enum EmployeeName {
     NAME7("Chenzira Chuki"),
     NAME8("David Morris"),
     NAME9("Dominic Chase"),
-    NAME10("Dominic Chase");
+    NAME10("Dominic Chase"),
+    NAME11("Odis Adalwin");
 
     private final String value;
 

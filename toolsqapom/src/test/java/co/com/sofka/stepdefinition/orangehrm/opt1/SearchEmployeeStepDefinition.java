@@ -68,7 +68,7 @@ public class SearchEmployeeStepDefinition extends WebUI {
         orangehrmLoginModel = new OrangehrmLoginModel();
         orangehrmLoginModel.setUser("Admin");
         orangehrmLoginModel.setPassword("admin123");
-        orangehrmLoginModel.setEmployeeName(EmployeeName.NAME10);
+        orangehrmLoginModel.setEmployeeName(EmployeeName.NAME11);
     }
 
     private String expected(){

@@ -72,7 +72,7 @@ public class OrangehrmLogin  extends CommonActionsOnPages{
             withExplicitWaitClear(searchEmployeeName);
             withExplicitWaitTypeInto(searchEmployeeName,orangeLoginModel.getEmployeeName().getValue());
 
-            withExplicitWaitTypeInto(searchEmployeeName, Keys.TAB);
+           withExplicitWaitTypeInto(searchEmployeeName, Keys.TAB);
 
             scrollTo(btnSearch);
             withExplicitWaitClickOn(btnSearch);
