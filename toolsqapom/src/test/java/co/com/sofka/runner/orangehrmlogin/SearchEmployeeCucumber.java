@@ -9,11 +9,9 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         publish = true,
         plugin = {"pretty", "html:target/cucumber-report/cucumber.html"},
-        features = {"src/test/resources/features/webui/orangehrmlogin/login.feature"},
+        features = {"src/test/resources/features/webui/orangehrmlogin/searchEmployee.feature"},
         glue = {"co.com.sofka.stepdefinition.orangehrm.opt1"},
         tags = "not @ignore"
 )
-public class LoginFromCucumber {
+public class SearchEmployeeCucumber {
 }
-
-

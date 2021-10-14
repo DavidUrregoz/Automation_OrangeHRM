@@ -3,15 +3,13 @@ package co.com.sofka.stepdefinition.orangehrm.opt1;
 import co.com.sofka.model.orangehrmlogin.OrangehrmLoginModel;
 import co.com.sofka.page.orangehrmlogin.OrangehrmLogin;
 import co.com.sofka.stepdefinition.setup.WebUI;
-import co.com.sofka.util.EmployeeName;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import static co.com.sofka.util.Seconds.TEN_SECONDS;
 
@@ -183,7 +181,7 @@ public class LoginCucumberStepDefinition extends WebUI {
 
     private void dataCorrectConfiguration(){
         orangehrmLoginModel = new OrangehrmLoginModel();
-        orangehrmLoginModel.setUser("Admin3");
+        orangehrmLoginModel.setUser("Admin");
         orangehrmLoginModel.setPassword("admin123");
     }
     private void dataFailConfiguration1(){
