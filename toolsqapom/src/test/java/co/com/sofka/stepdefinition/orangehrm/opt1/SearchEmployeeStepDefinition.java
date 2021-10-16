@@ -1,12 +1,14 @@
 package co.com.sofka.stepdefinition.orangehrm.opt1;
 
 import co.com.sofka.model.orangehrmlogin.OrangehrmLoginModel;
+import co.com.sofka.model.orangehrmlogin.OrangehrmSearchModel;
 import co.com.sofka.page.orangehrmlogin.OrangehrmLoginSearch;
+import co.com.sofka.page.orangehrmlogin.OrangehrmSearch;
 import co.com.sofka.stepdefinition.setup.WebUI;
+import co.com.sofka.util.EmployeeName;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import co.com.sofka.util.EmployeeName;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
@@ -18,6 +20,8 @@ public class SearchEmployeeStepDefinition extends WebUI {
     private static final Logger LOGGER = Logger.getLogger(LoginCucumberStepDefinition.class);
     private OrangehrmLoginModel orangehrmLoginModel;
     private OrangehrmLoginSearch orangehrmLogin;
+    private OrangehrmSearchModel orangehrmSearchModel;
+    private OrangehrmSearch orangehrmSearch;
 
     private static final String ASSERTION_EXCEPTION_MESSAGE = "Los valores suministrados no son los esperados.";
 
@@ -25,7 +29,7 @@ public class SearchEmployeeStepDefinition extends WebUI {
     public void que_el_empleado_administrativo_se_encuentra_correctamente_autenticado_en_la_aplicacion_de_orange_hrm() {
         try{
             generalSetUp();
-            dataCorrectConfiguration();
+            dataCorrectConfigurationLogin();
             orangehrmLogin = new OrangehrmLoginSearch(driver,orangehrmLoginModel,TEN_SECONDS.getValue());
             orangehrmLogin.llenarLogin();
         } catch (Exception exception){
@@ -39,7 +43,9 @@ public class SearchEmployeeStepDefinition extends WebUI {
     @When("el empleado proceda a hacer una busqueda en la sesion de Admin  por medio del Employee name")
     public void el_empleado_proceda_a_hacer_una_busqueda_en_la_sesion_de_admin_por_medio_del_employee_name() {
         try {
-            orangehrmLogin.busquedaUsuariosEmployeeName();
+            dataCorrectConfigurationSearc();
+            orangehrmSearch=new OrangehrmSearch(driver,orangehrmSearchModel,TEN_SECONDS.getValue());
+            orangehrmSearch.busquedaUsuariosEmployeeName();
         } catch (Exception exception){
             quitDriver();
             LOGGER.error(exception.getMessage(), exception);
@@ -53,7 +59,7 @@ public class SearchEmployeeStepDefinition extends WebUI {
         try {
             Assertions.assertEquals(
                     expected(),
-                    orangehrmLogin.getAssertionSearch(),
+                    orangehrmSearch.getAssertionSearch(),
                     ASSERTION_EXCEPTION_MESSAGE
             );
 
@@ -65,15 +71,20 @@ public class SearchEmployeeStepDefinition extends WebUI {
         }
     }
 
-    private void dataCorrectConfiguration(){
+    private void dataCorrectConfigurationLogin(){
         orangehrmLoginModel = new OrangehrmLoginModel();
         orangehrmLoginModel.setUser("Admin");
         orangehrmLoginModel.setPassword("admin123");
-        orangehrmLoginModel.setEmployeeName(EmployeeName.NAME4);
     }
 
+    private void dataCorrectConfigurationSearc(){
+        orangehrmSearchModel = new OrangehrmSearchModel();
+        orangehrmSearchModel.setEmployeeName(EmployeeName.NAME7);
+    }
+
+
     private String expected(){
-        return orangehrmLoginModel.getEmployeeName().getValue();
+        return orangehrmSearchModel.getEmployeeName().getValue();
     }
 
 }

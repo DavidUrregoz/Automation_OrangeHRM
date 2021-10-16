@@ -28,6 +28,7 @@ public class OrangehrmLoginSearch extends CommonActionsOnPages{
     //For Assertions test case.
     private final By assertionLoginFail = By.id("spanMessage");
     private final By assertionLoginExitoso = By.id("welcome");
+
     private final By assertionSearch = By.xpath("//*[@id=\"resultTable\"]/tbody/tr/td[4]");
 
 
@@ -63,26 +64,6 @@ public class OrangehrmLoginSearch extends CommonActionsOnPages{
     }
 
 
-    public void busquedaUsuariosEmployeeName()throws IOException{
-        try{
-            scrollTo(adminMenu);
-            withExplicitWaitClickOn(adminMenu);
-
-            scrollTo(searchEmployeeName);
-            withExplicitWaitClear(searchEmployeeName);
-            withExplicitWaitTypeInto(searchEmployeeName,orangeLoginModel.getEmployeeName().getValue());
-
-           withExplicitWaitTypeInto(searchEmployeeName, Keys.TAB);
-
-            scrollTo(btnSearch);
-            withExplicitWaitClickOn(btnSearch);
-
-        } catch (Exception exception){
-            LOGGER.warn(exception.getMessage());
-        }
-    }
-
-
     public By getAssertionLoginExitoso() {
         return assertionLoginExitoso;
     }
@@ -91,7 +72,5 @@ public class OrangehrmLoginSearch extends CommonActionsOnPages{
         return getText(assertionLoginFail).trim();
     }
 
-    public String getAssertionSearch(){
-        return getText(assertionSearch).trim();
-    }
+
 }

@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
 
-import static co.com.sofka.util.Seconds.TEN_SECONDS;
 import static co.com.sofka.util.Numbers.*;
+import static co.com.sofka.util.Seconds.*;
 
 public class LoginCucumberStepDefinition extends WebUI {
     private static final Logger LOGGER = Logger.getLogger(LoginCucumberStepDefinition.class);
